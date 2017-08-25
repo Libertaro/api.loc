@@ -2,15 +2,23 @@
 
 namespace app\models;
 
-use Yii;
-use yii\base\Model;
+use yii\db\ActiveRecord;
 
-/**
- * ContactForm is the model behind the contact form.
- */
-class Users extends \yii\db\ActiveRecord
+class Users extends ActiveRecord
 {
-//    public $name;
+
+    public static function tableName()
+    {
+        return 'users';
+    }
+
+    public function fields()
+    {
+        return [
+            'id',
+            'name',
+        ];
+    }
 
     /**
      * @return array the validation rules.
@@ -22,7 +30,7 @@ class Users extends \yii\db\ActiveRecord
         ];
     }
 
-    public function getAllUsers(){
+    public static function getAllUsers(){
         return Users::find()->all();
     }
 }
